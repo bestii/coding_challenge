@@ -1,26 +1,21 @@
-import { Grid, Stack, Pagination } from "@mui/material";
+import { Stack, Pagination } from "@mui/material";
 import { FC, useEffect, useState, useCallback } from "react";
 import StartupHttpService from "../../Http/Startup/Startup.http.service";
 import { Startup } from "../../Types/Startup";
 import StartupListItem from "./StartupListItem";
 
 const StartupList: FC = () => {
-  const [startups, setStartups] = useState<Startup[]>([]);
-  const [pages, setPages] = useState({});
-  const [page, setPage] = useState(1);
-  const handleChange = (event: any, value: any) => {
+  const [pages, setPages] = useState<Record<number, Startup[]> | null>(null);
+  const [page, setPage] = useState<number>(1);
+  const handleChange = useCallback((event: any, value: any) => {
     setPage(value);
-    console.log(value);
-  };
-  console.log(pages);
+  }, []);
 
   useEffect(() => {
-    // Async Function to get the list of startups
+    // Async function to get the list of startups
     const getStartupListAsync = async () => {
       try {
         const response = await StartupHttpService.getStartups();
-        //console.log(response);
-        setStartups(response);
         let counter = 0,
           page = 1,
           pagesTemp: Record<any, any> = {};
@@ -39,14 +34,20 @@ const StartupList: FC = () => {
   }, []);
 
   return (
-    <Grid container spacing={2}>
-      <Stack spacing={2}>
-        {startups.map((startup) => {
-          return <StartupListItem key={startup.id} startup={startup} />;
-        })}
-        <Pagination count={10} page={page} onChange={handleChange} />
-      </Stack>
-    </Grid>
+    <>
+      {pages ? (
+        <Stack spacing={2} flexDirection="column">
+          {pages[page].map((startup) => {
+            return <StartupListItem key={startup.id} startup={startup} />;
+          })}
+          <Pagination
+            count={Object.keys(pages).length}
+            page={page}
+            onChange={handleChange}
+          />
+        </Stack>
+      ) : null}
+    </>
   );
 };
 

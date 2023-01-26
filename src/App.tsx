@@ -13,6 +13,7 @@ import SideNav from "./Components/Navigation/SideNav";
 import ApplicationBar from "./Components/Navigation/ApplicationBar";
 import { ReactElement } from "react";
 import StartupList from "./Components/Startup/StartupList";
+import StartupDetails from "./Components/Startup/StartupDetails";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -70,7 +71,8 @@ export default function App(): ReactElement {
                 return <Redirect to="/" />;
               }}
             />
-            <Route exact path="/startups" component={} />
+            <Route exact path="/startups" component={StartupList} />
+            <Route exact path="/startups/:id" component={StartupDetails} />
           </Switch>
         </main>
       </div>

@@ -7,10 +7,10 @@ import reportWebVitals from "./reportWebVitals";
 import theme from "./theme";
 import { worker } from "./mocks/browser";
 
-if (process.env.REACT_APP_MSW === "active") {
-  console.log("starting worker");
-  worker.start();
-}
+// if (process.env.REACT_APP_MSW === "active") {
+console.log("starting worker");
+worker.start();
+// }
 
 declare module "@mui/styles/defaultTheme" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface

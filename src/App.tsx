@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, ReactElement } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,7 +11,6 @@ import makeStyles from "@mui/styles/makeStyles";
 import CssBaseline from "@mui/material/CssBaseline";
 import SideNav from "./Components/Navigation/SideNav";
 import ApplicationBar from "./Components/Navigation/ApplicationBar";
-import { ReactElement } from "react";
 import StartupList from "./Components/Startup/StartupList";
 import StartupDetails from "./Components/Startup/StartupDetails";
 

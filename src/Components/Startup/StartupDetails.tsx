@@ -6,6 +6,7 @@ import { Startup } from "../../Types/Startup";
 const StartupDetails = () => {
   const [startup, setStartup] = useState<Startup>();
   const { id } = useParams<{ id?: string }>();
+  console.log(startup);
 
   useEffect(() => {
     const getStartupByIdAsync = async () => {

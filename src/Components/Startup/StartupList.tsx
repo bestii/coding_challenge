@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import { FC, useEffect, useState } from "react";
 import StartupHttpService from "../../Http/Startup/Startup.http.service";
 import { Startup } from "../../Types/Startup";
@@ -8,6 +8,7 @@ const StartupList: FC = () => {
   const [startups, setStartups] = useState<Startup[]>([]);
 
   useEffect(() => {
+    // Async Function to get the list of startups
     const getStartupListAsync = async () => {
       try {
         const startupHttpService = new StartupHttpService();

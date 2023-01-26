@@ -13,8 +13,7 @@ const StartupDetails = () => {
       if (!id) return;
       try {
         console.log(id);
-        const startupHttpService = new StartupHttpService();
-        const response = await startupHttpService.getStartupById(id);
+        const response = await StartupHttpService.getStartupById(id);
         console.log(response);
         setStartup(response);
       } catch (error) {

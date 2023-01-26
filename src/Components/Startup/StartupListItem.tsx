@@ -26,9 +26,7 @@ const StartupListItem: FC<StartupListItemProps> = ({ startup }) => {
             <Typography
               variant="caption"
               sx={{ color: "#6c757d" }}
-            >{`Founded: ${new Date(
-              dateFounded
-            ).getFullYear()} | ${employees} Employees | ${totalFunding} $ | ${currentInvestmentStage}`}</Typography>
+            >{`Founded: ${dateFounded.getFullYear()} | ${employees} Employees | ${totalFunding} $ | ${currentInvestmentStage}`}</Typography>
             <Typography variant="body1" sx={{ mt: 2 }}>
               {shortDescription}
             </Typography>
